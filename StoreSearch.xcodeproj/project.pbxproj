@@ -12,6 +12,7 @@
 		512C56671C635F0C0015F2DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512C56651C635F0C0015F2DB /* Main.storyboard */; };
 		512C56691C635F0C0015F2DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512C56681C635F0C0015F2DB /* Assets.xcassets */; };
 		512C566C1C635F0C0015F2DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512C566A1C635F0C0015F2DB /* LaunchScreen.storyboard */; };
+		51532AE11C63AA9B00F5450D /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51532AE01C63AA9B00F5450D /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		512C56681C635F0C0015F2DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512C566B1C635F0C0015F2DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512C566D1C635F0C0015F2DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51532AE01C63AA9B00F5450D /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		512C56731C6360080015F2DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				51532AE01C63AA9B00F5450D /* SearchResult.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512C56641C635F0C0015F2DB /* SearchViewController.swift in Sources */,
+				51532AE11C63AA9B00F5450D /* SearchResult.swift in Sources */,
 				512C56621C635F0C0015F2DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +320,7 @@
 				512C56721C635F0C0015F2DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

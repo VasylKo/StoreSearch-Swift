@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   //MARK: - Ivars
+  var searchResults = [SearchResult]()
   
   //MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -31,15 +32,64 @@ class SearchViewController: UIViewController {
   }
 }
 
+//MARK: - Search Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-    print("The search text is: '\(searchBar.text!)'")
+    searchBar.resignFirstResponder()
+    searchResults = [SearchResult]()
+    
+    if searchBar.text! != "justin bieber" {
+      for i in 0...2 {
+        let serachResult = SearchResult()
+        serachResult.name = String(format: "Fake Result %d for", i)
+        serachResult.artistName = searchBar.text!
+        searchResults.append(serachResult)
+      }
+    }
+    
+    tableView.reloadData()
+  }
+  
+  func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+    return .TopAttached
   }
 }
 
 
+
+//MARK: - Table View Delegate
 extension SearchViewController: UITableViewDataSource {
   
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if searchResults.count == 0 {
+      return 1
+    } else {
+      return searchResults.count
+    }
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    let cellIdentifier = "SearchResultCell"
+    
+    var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+    
+    if cell == nil {
+      cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
+    }
+    
+    if searchResults.count == 0 {
+      cell.textLabel!.text = "(Nothing found)"
+      cell.detailTextLabel!.text = ""
+    } else {
+      let searchResult = searchResults[indexPath.row]
+      cell.textLabel!.text = searchResult.name
+      cell.detailTextLabel!.text = searchResult.artistName
+    }
+    
+    
+    return cell
+  }
 }
 
 extension SearchViewController: UITableViewDelegate {
