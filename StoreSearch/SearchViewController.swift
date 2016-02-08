@@ -86,6 +86,144 @@ class SearchViewController: UIViewController {
     }
   }
   
+  //MARK: - Parse response
+  func parseDictionary(dictionary: [String: AnyObject]) -> [SearchResult] {
+    
+    guard let array = dictionary["results"] as? [AnyObject] else {
+      print("Expected 'results' array")
+      return []
+    }
+    
+    var searchResults = [SearchResult]()
+    
+    for resultDict in array {
+      if let resultDict = resultDict as? [String: AnyObject] {
+        
+        var searchResult: SearchResult?
+        
+        if let wrapperType = resultDict["wrapperType"] as? String {
+          
+          switch wrapperType {
+          case "track":
+            searchResult = parseTrack(resultDict)
+          case "audiobook":
+            searchResult = parseAudioBook(resultDict)
+          case "software":
+            searchResult = parseSoftware(resultDict)
+          default:
+            break
+          }
+        } else if let kind = resultDict["kind"] as? String where kind == "ebook" {
+          searchResult = parseEBook(resultDict)
+        }
+        
+        if let result = searchResult {
+          searchResults.append(result)
+        }
+        
+      }
+    }
+    
+    return searchResults
+  }
+  
+  func parseTrack(dictionary: [String: AnyObject]) -> SearchResult {
+    let searchResult = SearchResult()
+    
+    searchResult.name = dictionary["trackName"] as! String
+    searchResult.artistName = dictionary["artistName"] as! String
+    searchResult.artworkURL60 = dictionary["artworkUrl60"] as! String
+    searchResult.artworkURL100 = dictionary["artworkUrl100"] as! String
+    searchResult.storeURL = dictionary["trackViewUrl"] as! String
+    searchResult.kind = dictionary["kind"] as! String
+    searchResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["trackPrice"] as? Double {
+      searchResult.price = price
+    }
+    
+    if let genre = dictionary["primaryGenreName"] as? String {
+      searchResult.genre = genre
+    }
+    
+    return searchResult
+  }
+  
+  func parseAudioBook(dictionary: [String: AnyObject]) -> SearchResult {
+    let searchResult = SearchResult()
+    searchResult.name = dictionary["collectionName"] as! String
+    searchResult.artistName = dictionary["artistName"] as! String
+    searchResult.artworkURL60 = dictionary["artworkUrl60"] as! String
+    searchResult.artworkURL100 = dictionary["artworkUrl100"] as! String
+    searchResult.storeURL = dictionary["collectionViewUrl"] as! String
+    searchResult.kind = "audiobook"
+    searchResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["collectionPrice"] as? Double {
+      searchResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      searchResult.genre = genre
+    }
+    return searchResult
+  }
+  
+  func parseSoftware(dictionary: [String: AnyObject]) -> SearchResult {
+    let searchResult = SearchResult()
+    searchResult.name = dictionary["trackName"] as! String
+    searchResult.artistName = dictionary["artistName"] as! String
+    searchResult.artworkURL60 = dictionary["artworkUrl60"] as! String
+    searchResult.artworkURL100 = dictionary["artworkUrl100"] as! String
+    searchResult.storeURL = dictionary["trackViewUrl"] as! String
+    searchResult.kind = dictionary["kind"] as! String
+    searchResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      searchResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      searchResult.genre = genre
+    }
+    return searchResult
+  }
+  
+  func parseEBook(dictionary: [String: AnyObject]) -> SearchResult {
+    let searchResult = SearchResult()
+    searchResult.name = dictionary["trackName"] as! String
+    searchResult.artistName = dictionary["artistName"] as! String
+    searchResult.artworkURL60 = dictionary["artworkUrl60"] as! String
+    searchResult.artworkURL100 = dictionary["artworkUrl100"] as! String
+    searchResult.storeURL = dictionary["trackViewUrl"] as! String
+    searchResult.kind = dictionary["kind"] as! String
+    searchResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      searchResult.price = price
+    }
+    if let genres: AnyObject = dictionary["genres"] {
+      searchResult.genre = (genres as! [String]).joinWithSeparator(", ")
+    }
+    return searchResult
+  }
+  
+  //MARK: - Helper
+  func kindForDisplay(kind: String) -> String {
+    
+    switch kind {
+    case "album": return "Album"
+    case "audiobook": return "Audio Book"
+    case "book": return "Book"
+    case "ebook": return "E-Book"
+    case "feature-movie": return "Movie"
+    case "music-video": return "Music Video"
+    case "podcast": return "Podcast"
+    case "software": return "App"
+    case "song": return "Song"
+    case "tv-episode": return "TV Episode"
+    default: return kind
+    }
+  }
+  
 }
 
 //MARK: - Search Bar Delegate
@@ -100,8 +238,24 @@ extension SearchViewController: UISearchBarDelegate {
       print("URL: '\(url)'")
       if let jsonString = performStoreRequestWithURL(url) {
         if let dictionary = parseJSON(jsonString) {
-          print("Dictionary \(dictionary)")
-        
+          searchResults = parseDictionary(dictionary)
+          //Sort results A-Z
+          //Ver 1
+          /*
+          searchResults.sortInPlace({ (result1, result2) -> Bool in
+            return result1.name.localizedStandardCompare(result2.name) == .OrderedAscending
+          })
+          */
+          
+          //Ver 2
+          //searchResults.sortInPlace { $0.name.localizedStandardCompare($1.name) == .OrderedAscending }
+          
+          //Ver 3
+          //searchResults.sortInPlace { $0 < $1 }
+          
+          //Ver 4
+          searchResults.sortInPlace(<)
+          
           tableView.reloadData()
           return
         }
@@ -141,7 +295,13 @@ extension SearchViewController: UITableViewDataSource {
       
       let searchResult = searchResults[indexPath.row]
       cell.nameLabel.text = searchResult.name
-      cell.artistNameLabel.text = searchResult.artistName
+      
+      if searchResult.artistName.isEmpty {
+        cell.artistNameLabel.text = "Unknown"
+      } else {
+        cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
+      }
+      
       
       return cell
     }
@@ -162,4 +322,9 @@ extension SearchViewController: UITableViewDelegate {
       return indexPath
     }
   }
+}
+
+//MARK: - Operator overloading
+func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
+  return lhs.name.localizedStandardCompare(rhs.name) == .OrderedAscending
 }
