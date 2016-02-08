@@ -16,7 +16,7 @@ class SearchResultCell: UITableViewCell {
   @IBOutlet weak var artworkImageView: UIImageView!
   
   //MARK: - Ivars
-  
+  var downloadTask: NSURLSessionDownloadTask?
   
   //MARK: - View life cycle
   override func awakeFromNib() {
@@ -35,6 +35,22 @@ class SearchResultCell: UITableViewCell {
     } else {
       artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
     }
+    
+    artworkImageView.image = UIImage(named: "Placeholder")
+    if let url = NSURL(string: searchResult.artworkURL60) {
+      downloadTask = artworkImageView.loadImageWithURL(url)
+    }
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    
+    downloadTask?.cancel()
+    downloadTask = nil
+    
+    nameLabel.text = nil
+    artistNameLabel.text = nil
+    artworkImageView.image = nil
   }
   
   //MARK: - Helper

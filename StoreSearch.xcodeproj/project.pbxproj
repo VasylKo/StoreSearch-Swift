@@ -17,6 +17,7 @@
 		51532AE71C64CD6E00F5450D /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */; };
 		5174B0581C6882C600CC67BA /* UIColor+AppTintColots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B0571C6882C600CC67BA /* UIColor+AppTintColots.swift */; };
 		5174B05A1C68BA5A00CC67BA /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5174B0591C68BA5A00CC67BA /* LoadingCell.xib */; };
+		5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		5174B0571C6882C600CC67BA /* UIColor+AppTintColots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppTintColots.swift"; sourceTree = "<group>"; };
 		5174B0591C68BA5A00CC67BA /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5174B0571C6882C600CC67BA /* UIColor+AppTintColots.swift */,
+				5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			files = (
 				512C56641C635F0C0015F2DB /* SearchViewController.swift in Sources */,
 				51532AE11C63AA9B00F5450D /* SearchResult.swift in Sources */,
+				5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */,
 				51532AE51C64CAAA00F5450D /* SearchResultCell.swift in Sources */,
 				5174B0581C6882C600CC67BA /* UIColor+AppTintColots.swift in Sources */,
 				512C56621C635F0C0015F2DB /* AppDelegate.swift in Sources */,
