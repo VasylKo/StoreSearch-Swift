@@ -17,6 +17,7 @@
 		51532AE51C64CAAA00F5450D /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51532AE41C64CAAA00F5450D /* SearchResultCell.swift */; };
 		51532AE71C64CD6E00F5450D /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */; };
 		5174B0581C6882C600CC67BA /* UIColor+AppTintColots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B0571C6882C600CC67BA /* UIColor+AppTintColots.swift */; };
+		5174B05A1C68BA5A00CC67BA /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5174B0591C68BA5A00CC67BA /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		51532AE41C64CAAA00F5450D /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		5174B0571C6882C600CC67BA /* UIColor+AppTintColots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppTintColots.swift"; sourceTree = "<group>"; };
+		5174B0591C68BA5A00CC67BA /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				51532AE21C646DE900F5450D /* SearchResultCell.xib */,
 				51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */,
 				51532AE41C64CAAA00F5450D /* SearchResultCell.swift */,
+				5174B0591C68BA5A00CC67BA /* LoadingCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			files = (
 				512C566C1C635F0C0015F2DB /* LaunchScreen.storyboard in Resources */,
 				512C56691C635F0C0015F2DB /* Assets.xcassets in Resources */,
+				5174B05A1C68BA5A00CC67BA /* LoadingCell.xib in Resources */,
 				51532AE31C646DE900F5450D /* SearchResultCell.xib in Resources */,
 				51532AE71C64CD6E00F5450D /* NothingFoundCell.xib in Resources */,
 				512C56671C635F0C0015F2DB /* Main.storyboard in Resources */,
