@@ -39,6 +39,9 @@ class SearchViewController: UIViewController {
     tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
     
     tableView.rowHeight = 80
+    
+    //keyboard will be immediately visible when you start the app so the user can start typing right away
+    searchBar.becomeFirstResponder()
   }
 
   override func didReceiveMemoryWarning() {

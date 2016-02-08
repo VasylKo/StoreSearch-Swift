@@ -20,14 +20,17 @@ class SearchResultCell: UITableViewCell {
   
   //MARK: - View life cycle
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    super.awakeFromNib()
+    // Initialization code
+    let selectedView = UIView(frame: CGRect.zero)
+    selectedView.backgroundColor = UIColor.appBluishGreenTinColor()
+    selectedBackgroundView = selectedView
+  }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  override func setSelected(selected: Bool, animated: Bool) {
+      super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+      // Configure the view for the selected state
+  }
 
 }
