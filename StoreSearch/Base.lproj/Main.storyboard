@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="igQ-qQ-NAF">
+                                <rect key="frame" x="0.0" y="0.0" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JWL-Uv-2A7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,10 +40,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Psb-Cc-nfk"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsT-vl-aMT">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ac9-1B-THs">
+                                <rect key="frame" x="161" y="72" width="279" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Music"/>
+                                    <segment title="Software"/>
+                                    <segment title="E-books"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="TEV-bo-eke"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JWL-Uv-2A7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3Qb-s7-tkU"/>
+                            <constraint firstItem="Ac9-1B-THs" firstAttribute="top" secondItem="UsM-ap-BcL" secondAttribute="bottom" constant="8" id="3Tv-BD-Rmc"/>
                             <constraint firstItem="JWL-Uv-2A7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4Ym-dd-syl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JWL-Uv-2A7" secondAttribute="bottom" id="6pG-Pk-XQR"/>
                             <constraint firstAttribute="trailing" secondItem="JWL-Uv-2A7" secondAttribute="trailing" id="HHX-B6-cah"/>
@@ -44,10 +67,14 @@
                             <constraint firstAttribute="trailing" secondItem="UsM-ap-BcL" secondAttribute="trailing" id="IsC-Al-qQH"/>
                             <constraint firstItem="JWL-Uv-2A7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xin-06-Op9"/>
                             <constraint firstItem="UsM-ap-BcL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZJb-GA-cya"/>
+                            <constraint firstItem="gsT-vl-aMT" firstAttribute="top" secondItem="UsM-ap-BcL" secondAttribute="bottom" id="cCt-F4-SlJ"/>
                             <constraint firstItem="JWL-Uv-2A7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="cPx-Yw-B1S"/>
                             <constraint firstItem="JWL-Uv-2A7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hQy-sY-EVd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JWL-Uv-2A7" secondAttribute="bottom" id="lxA-QA-UI3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JWL-Uv-2A7" secondAttribute="trailing" id="oVl-52-SC5"/>
+                            <constraint firstItem="gsT-vl-aMT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pjq-ug-Xth"/>
+                            <constraint firstAttribute="trailing" secondItem="gsT-vl-aMT" secondAttribute="trailing" id="xMq-nN-WL7"/>
+                            <constraint firstItem="Ac9-1B-THs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ypo-ep-a9d"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -61,12 +88,13 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="UsM-ap-BcL" id="d6m-SE-DNR"/>
+                        <outlet property="segmentedControl" destination="Ac9-1B-THs" id="YOs-dk-xbT"/>
                         <outlet property="tableView" destination="JWL-Uv-2A7" id="ixS-DI-hoy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="417"/>
+            <point key="canvasLocation" x="332" y="445"/>
         </scene>
     </scenes>
 </document>
