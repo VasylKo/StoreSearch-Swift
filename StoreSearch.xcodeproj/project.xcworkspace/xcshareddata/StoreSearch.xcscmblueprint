@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EB7F586E32F28891179D009D0F4CEA7BA249BA69",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "941ECC844D7991658D5C672BC73C0BE640D05972" : 0,
+    "EB7F586E32F28891179D009D0F4CEA7BA249BA69" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "89D58AFB-B3D3-4DA7-B0E3-AB7BBE39A94E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "941ECC844D7991658D5C672BC73C0BE640D05972" : "",
+    "EB7F586E32F28891179D009D0F4CEA7BA249BA69" : "Store_search\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "StoreSearch",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "StoreSearch.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/VasylKo\/MyLocations-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "941ECC844D7991658D5C672BC73C0BE640D05972"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/VasylKo\/StoreSearch-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB7F586E32F28891179D009D0F4CEA7BA249BA69"
+    }
+  ]
+}

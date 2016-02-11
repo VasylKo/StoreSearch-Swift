@@ -20,6 +20,7 @@
 		5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */; };
 		5174B05E1C69191C00CC67BA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B05D1C69191C00CC67BA /* DetailViewController.swift */; };
 		5174B0611C691AB900CC67BA /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B0601C691AB900CC67BA /* DimmingPresentationController.swift */; };
+		5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5422F0B11C6CDA3A0087B99A /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		5174B05D1C69191C00CC67BA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5174B0601C691AB900CC67BA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		5422F0B11C6CDA3A0087B99A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				51532AE61C64CD6E00F5450D /* NothingFoundCell.xib */,
 				51532AE41C64CAAA00F5450D /* SearchResultCell.swift */,
 				5174B0591C68BA5A00CC67BA /* LoadingCell.xib */,
+				5422F0B11C6CDA3A0087B99A /* GradientView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				5174B0581C6882C600CC67BA /* UIColor+AppTintColots.swift in Sources */,
 				512C56621C635F0C0015F2DB /* AppDelegate.swift in Sources */,
 				5174B05E1C69191C00CC67BA /* DetailViewController.swift in Sources */,
+				5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

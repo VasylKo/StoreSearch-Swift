@@ -9,7 +9,17 @@
 import UIKit
 
 class DimmingPresentationController: UIPresentationController {
-  override func shouldRemovePresentersView() -> Bool {
-    return false
-  }
+    lazy var dimmingView = GradientView(frame: CGRect.zero)
+    
+    override func shouldRemovePresentersView() -> Bool {
+        return false
+    }
+    
+    //The presentationTransitionWillBegin() method is invoked when the new view controller is about to be shown on the screen
+    override func presentationTransitionWillBegin() {
+        
+        //The container view is a new view that is placed on top of the SearchViewController
+        dimmingView.frame = containerView!.bounds
+        containerView!.insertSubview(dimmingView, atIndex: 0)
+    }
 }

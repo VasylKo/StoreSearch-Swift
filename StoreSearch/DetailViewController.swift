@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
   //MARK: - View life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = UIColor.clearColor()
     view.tintColor = UIColor.appBluishGreenTinColor()
     
     popupView.layer.cornerRadius = 10
