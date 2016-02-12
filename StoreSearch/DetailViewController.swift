@@ -10,26 +10,32 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-  //MARK: - Outlets
-  @IBOutlet weak var popupView: UIView!
-  @IBOutlet weak var artworkImageView: UIImageView!
-  @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var artistNameLabel: UILabel!
-  @IBOutlet weak var kindLabel: UILabel!
-  @IBOutlet weak var genreLabel: UILabel!
-  @IBOutlet weak var priceButton: UIButton!
+    enum AnimationStyle {
+        case Slide
+        case Fade
+    }
+    
+    //MARK: - Outlets
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var artworkImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var kindLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var priceButton: UIButton!
+
+    //MARK: - Ivars
+    var searchResult: SearchResult!
+
+    lazy var currencyFormatter:NSNumberFormatter = {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.currencyCode = self.searchResult.currency
+        return formatter
+    }()
   
-  //MARK: - Ivars
-  var searchResult: SearchResult!
-  
-  lazy var currencyFormatter:NSNumberFormatter = {
-    let formatter = NSNumberFormatter()
-    formatter.numberStyle = .CurrencyStyle
-    formatter.currencyCode = self.searchResult.currency
-    return formatter
-  }()
-  
-  var downloadTask: NSURLSessionDownloadTask?
+    var downloadTask: NSURLSessionDownloadTask?
+    var dismissAnimationStyle = AnimationStyle.Fade
   
   //MARK: - View life cycle
   override func viewDidLoad() {
@@ -72,7 +78,8 @@ class DetailViewController: UIViewController {
   
   //MARK: - Actions
   @IBAction func close(sender: UIButton) {
-      dismissViewControllerAnimated(true, completion: nil)
+    dismissAnimationStyle = .Slide
+    dismissViewControllerAnimated(true, completion: nil)
   }
   
   @IBAction func openInStore() {
@@ -123,7 +130,13 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAnimationController()
+        switch dismissAnimationStyle {
+        case .Slide:
+            return SlideOutAnimationController()
+        case .Fade:
+            return FadeOutAnimationController()
+        }
+        
     }
     
 }

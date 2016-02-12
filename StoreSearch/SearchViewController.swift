@@ -10,22 +10,23 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-  struct TableViewCellIdentifiers {
+    struct TableViewCellIdentifiers {
     static let searchResultCell = "SearchResultCell"
     static let nothingFoundCell = "NothingFoundCell"
     static let loadingCell = "LoadingCell"
-  }
-  
-  //MARK: - Outlets
-  @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var segmentedControl: UISegmentedControl!
-  
-  //MARK: - Ivars
-  var searchResults = [SearchResult]()
-  var hasSearched = false
-  var isLoading = false
-  var dataTask: NSURLSessionDataTask?
+    }
+
+    //MARK: - Outlets
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+
+    //MARK: - Ivars
+    var searchResults = [SearchResult]()
+    var hasSearched = false
+    var isLoading = false
+    var dataTask: NSURLSessionDataTask?
+    var landscapeViewController: LandscapeViewController?
   
   //MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -51,10 +52,56 @@ class SearchViewController: UIViewController {
     searchBar.becomeFirstResponder()
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        
+        switch newCollection.verticalSizeClass {
+        case .Compact:
+            showLandscapeViewWithCoordinator(coordinator)
+        case .Regular, .Unspecified:
+            hideLandscapeViewWithCoordinator(coordinator)
+        }
+    }
+    
+    //MARK: - iPhone Rotation handle
+    func showLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        precondition(landscapeViewController == nil)
+        
+        landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
+        
+        if let controller = landscapeViewController {
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+            
+            coordinator.animateAlongsideTransition({ _ -> Void in
+                controller.view.alpha = 1
+                self.searchBar.resignFirstResponder()
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+                }, completion: { _ -> Void in
+                    controller.didMoveToParentViewController(self)
+            })
+            
+        }
+    }
+    
+    func hideLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        if let controller = landscapeViewController {
+            controller.willMoveToParentViewController(nil)
+            
+            coordinator.animateAlongsideTransition({ _ -> Void in
+                controller.view.alpha = 0
+                }, completion: { _ -> Void in
+                    controller.view.removeFromSuperview()
+                    controller.removeFromParentViewController()
+                    self.landscapeViewController = nil
+            })
+        }
+    }
   
   //MARK: - Actions
   @IBAction func segmentChanged(sender: UISegmentedControl) {
