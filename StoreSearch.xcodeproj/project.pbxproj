@@ -20,6 +20,8 @@
 		5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */; };
 		5174B05E1C69191C00CC67BA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B05D1C69191C00CC67BA /* DetailViewController.swift */; };
 		5174B0611C691AB900CC67BA /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174B0601C691AB900CC67BA /* DimmingPresentationController.swift */; };
+		540C2FD11C6E28FF00980071 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C2FD01C6E28FF00980071 /* BounceAnimationController.swift */; };
+		540C2FD41C6E315700980071 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C2FD31C6E315700980071 /* SlideOutAnimationController.swift */; };
 		5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5422F0B11C6CDA3A0087B99A /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		5174B05B1C68F06400CC67BA /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		5174B05D1C69191C00CC67BA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5174B0601C691AB900CC67BA /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		540C2FD01C6E28FF00980071 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
+		540C2FD31C6E315700980071 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		5422F0B11C6CDA3A0087B99A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,7 @@
 		512C56751C6360160015F2DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				540C2FD21C6E313700980071 /* AnimationControllers */,
 				5174B05F1C691AA900CC67BA /* TransitionControllers */,
 				512C56631C635F0C0015F2DB /* SearchViewController.swift */,
 				5174B05D1C69191C00CC67BA /* DetailViewController.swift */,
@@ -129,6 +134,15 @@
 				5174B0601C691AB900CC67BA /* DimmingPresentationController.swift */,
 			);
 			name = TransitionControllers;
+			sourceTree = "<group>";
+		};
+		540C2FD21C6E313700980071 /* AnimationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				540C2FD01C6E28FF00980071 /* BounceAnimationController.swift */,
+				540C2FD31C6E315700980071 /* SlideOutAnimationController.swift */,
+			);
+			name = AnimationControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +177,7 @@
 				TargetAttributes = {
 					512C565D1C635F0C0015F2DB = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = PQRWZFL26C;
 					};
 				};
 			};
@@ -208,9 +223,11 @@
 				51532AE11C63AA9B00F5450D /* SearchResult.swift in Sources */,
 				5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */,
 				5174B0611C691AB900CC67BA /* DimmingPresentationController.swift in Sources */,
+				540C2FD11C6E28FF00980071 /* BounceAnimationController.swift in Sources */,
 				51532AE51C64CAAA00F5450D /* SearchResultCell.swift in Sources */,
 				5174B0581C6882C600CC67BA /* UIColor+AppTintColots.swift in Sources */,
 				512C56621C635F0C0015F2DB /* AppDelegate.swift in Sources */,
+				540C2FD41C6E315700980071 /* SlideOutAnimationController.swift in Sources */,
 				5174B05E1C69191C00CC67BA /* DetailViewController.swift in Sources */,
 				5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */,
 			);
@@ -315,10 +332,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StoreSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkotsiuba.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -326,10 +346,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StoreSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkotsiuba.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

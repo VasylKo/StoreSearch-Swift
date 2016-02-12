@@ -21,5 +21,21 @@ class DimmingPresentationController: UIPresentationController {
         //The container view is a new view that is placed on top of the SearchViewController
         dimmingView.frame = containerView!.bounds
         containerView!.insertSubview(dimmingView, atIndex: 0)
+        
+        dimmingView.alpha = 0
+        
+        if let transitionCoordinator = presentedViewController.transitionCoordinator() {
+            transitionCoordinator.animateAlongsideTransition({ _ -> Void in
+                self.dimmingView.alpha = 1
+                }, completion: nil)
+        }
+    }
+    
+    override func dismissalTransitionWillBegin() {
+        if let transitionCoordinator = presentedViewController.transitionCoordinator() {
+            transitionCoordinator.animateAlongsideTransition({ _ -> Void in
+                self.dimmingView.alpha = 0
+                }, completion: nil)
+        }
     }
 }
