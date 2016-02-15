@@ -243,19 +243,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landscape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2A-PU-Yy2">
-                                <rect key="frame" x="258" y="290" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o1-2u-8GE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y0B-kt-kcx">
+                                <rect key="frame" x="280" y="500" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j2A-PU-Yy2" firstAttribute="centerY" secondItem="QAp-Af-hbA" secondAttribute="centerY" id="2Nu-9c-J9a"/>
-                            <constraint firstItem="j2A-PU-Yy2" firstAttribute="centerX" secondItem="QAp-Af-hbA" secondAttribute="centerX" id="zNa-Zh-CyG"/>
+                            <constraint firstAttribute="trailing" secondItem="6o1-2u-8GE" secondAttribute="trailing" id="6z2-AN-VKF"/>
+                            <constraint firstItem="oVD-yH-oxP" firstAttribute="top" secondItem="6o1-2u-8GE" secondAttribute="bottom" id="NRp-xn-WgV"/>
+                            <constraint firstItem="6o1-2u-8GE" firstAttribute="leading" secondItem="QAp-Af-hbA" secondAttribute="leading" id="eis-LB-v2J"/>
+                            <constraint firstItem="6o1-2u-8GE" firstAttribute="top" secondItem="QAp-Af-hbA" secondAttribute="top" id="rHw-cU-RcI"/>
+                            <constraint firstItem="6o1-2u-8GE" firstAttribute="top" secondItem="fG0-DZ-ymF" secondAttribute="bottom" id="zcx-KR-y71"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6z2-AN-VKF"/>
+                                <exclude reference="eis-LB-v2J"/>
+                                <exclude reference="rHw-cU-RcI"/>
+                                <exclude reference="zcx-KR-y71"/>
+                                <exclude reference="NRp-xn-WgV"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="Y0B-kt-kcx" id="5Dj-aw-uXM"/>
+                        <outlet property="scrollView" destination="6o1-2u-8GE" id="gbQ-Ue-yjl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAB-kY-mk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
