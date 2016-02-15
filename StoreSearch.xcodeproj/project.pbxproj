@@ -25,6 +25,7 @@
 		540C2FD61C6E32F400980071 /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C2FD51C6E32F400980071 /* LandscapeViewController.swift */; };
 		5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5422F0B11C6CDA3A0087B99A /* GradientView.swift */; };
 		547848691C6E3A28009CA71A /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547848681C6E3A28009CA71A /* FadeOutAnimationController.swift */; };
+		5478486B1C71E700009CA71A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478486A1C71E700009CA71A /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		540C2FD51C6E32F400980071 /* LandscapeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		5422F0B11C6CDA3A0087B99A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		547848681C6E3A28009CA71A /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		5478486A1C71E700009CA71A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				512C56631C635F0C0015F2DB /* SearchViewController.swift */,
 				5174B05D1C69191C00CC67BA /* DetailViewController.swift */,
 				540C2FD51C6E32F400980071 /* LandscapeViewController.swift */,
+				5478486A1C71E700009CA71A /* Search.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				5174B05E1C69191C00CC67BA /* DetailViewController.swift in Sources */,
 				540C2FD61C6E32F400980071 /* LandscapeViewController.swift in Sources */,
 				5422F0B21C6CDA3A0087B99A /* GradientView.swift in Sources */,
+				5478486B1C71E700009CA71A /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
