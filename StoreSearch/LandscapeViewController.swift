@@ -62,6 +62,10 @@ class LandscapeViewController: UIViewController {
     
     deinit {
         print("deinit \(self)")
+        
+        for task in downloadTasks {
+            task.cancel()
+        }
     }
     
     // MARK: - Private methods
@@ -106,15 +110,12 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        var index = 0
+
         
         for searchResult in searchResults {
             
             let button = UIButton(type: .Custom)
-            button.backgroundColor = UIColor.lightGrayColor()
-            button.setTitle("\(index)", forState: .Normal)
-            index++
-            //button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
             
             button.frame = CGRect(
             x: x + paddingHorz,
@@ -123,7 +124,7 @@ class LandscapeViewController: UIViewController {
             
             scrollView.addSubview(button)
             
-            //downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
+            downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
             
             ++row
             if row == rowsPerPage {
@@ -155,7 +156,29 @@ class LandscapeViewController: UIViewController {
         completion: nil)
     }
     
+    private func downloadImageForSearchResult(searchResult: SearchResult, andPlaceOnButton button: UIButton) {
+        if let url = NSURL(string: searchResult.artworkURL60) {
+            let session = NSURLSession.sharedSession()
+            let downloadTask = session.downloadTaskWithURL(url) {
+                        [weak button] url, response, error in
+                        
+                        if error == nil, let url = url, data = NSData(contentsOfURL: url),
+                            image = UIImage(data: data) {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                if let button = button {
+                                button.setImage(image, forState: .Normal)
+                                }
+                            }
+                        }
+            }
     
+    
+    
+            downloadTask.resume()
+            downloadTasks.append(downloadTask)
+            
+        }
+    }
 }
 
 extension LandscapeViewController: UIScrollViewDelegate {
