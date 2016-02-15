@@ -93,6 +93,9 @@ class SearchViewController: UIViewController {
             
             coordinator.animateAlongsideTransition({ _ -> Void in
                 controller.view.alpha = 0
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
                 }, completion: { _ -> Void in
                     controller.view.removeFromSuperview()
                     controller.removeFromParentViewController()
@@ -146,6 +149,7 @@ extension SearchViewController: UISearchBarDelegate {
                     self.showNetworkError()
                 }
                 self.tableView.reloadData()
+                self.landscapeViewController?.searchResultsReceived()
             }
             
             tableView.reloadData() //to show the activity spinner
