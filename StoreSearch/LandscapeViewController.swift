@@ -17,6 +17,7 @@ class LandscapeViewController: UIViewController {
     //MARK: - Ivars
     var searchResults = [SearchResult]()
     private var firstTime = true
+    private var downloadTasks = [NSURLSessionDownloadTask]()
     
     //MARK: - View life cycle
     override func viewDidLoad() {
@@ -40,8 +41,10 @@ class LandscapeViewController: UIViewController {
         scrollView.removeConstraints(scrollView.constraints)
         scrollView.translatesAutoresizingMaskIntoConstraints = true
         
+        //Customize scrolll view
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
-        scrollView.contentSize = CGSize(width: 1000, height: 1000)
+        pageControl.numberOfPages = 0
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -144,14 +147,22 @@ class LandscapeViewController: UIViewController {
         pageControl.currentPage = 0
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func pageChanged(sender: UIPageControl) {
+            
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+        self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage),y: 0)
+        },
+        completion: nil)
     }
-    */
+    
+    
+}
 
+extension LandscapeViewController: UIScrollViewDelegate {
+        
+            func scrollViewDidScroll(scrollView: UIScrollView) {
+                let width = scrollView.bounds.size.width
+                let currentPage = Int((scrollView.contentOffset.x + width/2)/width)
+                pageControl.currentPage = currentPage
+        }
 }
