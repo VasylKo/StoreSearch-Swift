@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  StoreSearch
+
+  Created by Vasiliy Kotsiuba on 16/02/16.
+  Copyright © 2016 Vasiliy Kotsiuba. All rights reserved.
+*/
+
+CFBundleDisplayName = "ПошукДодатків";

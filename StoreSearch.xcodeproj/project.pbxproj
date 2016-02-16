@@ -26,6 +26,8 @@
 		5478486C1C722A01009CA71A /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5478486E1C722A01009CA71A /* NothingFoundCell.xib */; };
 		547848701C7230DB009CA71A /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547848721C7230DB009CA71A /* LoadingCell.xib */; };
 		547848771C723386009CA71A /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547848791C723386009CA71A /* SearchResultCell.xib */; };
+		547848821C735623009CA71A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547848801C735623009CA71A /* Localizable.strings */; };
+		547848861C7359EC009CA71A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547848881C7359EC009CA71A /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,9 @@
 		547848741C723103009CA71A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LoadingCell.strings; sourceTree = "<group>"; };
 		547848761C723284009CA71A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		547848781C723386009CA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchResultCell.xib; sourceTree = "<group>"; };
+		547848811C735623009CA71A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		547848831C735647009CA71A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		547848871C7359EC009CA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,8 @@
 				512C56651C635F0C0015F2DB /* Main.storyboard */,
 				512C56681C635F0C0015F2DB /* Assets.xcassets */,
 				512C566D1C635F0C0015F2DB /* Info.plist */,
+				547848801C735623009CA71A /* Localizable.strings */,
+				547848881C7359EC009CA71A /* InfoPlist.strings */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -218,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				512C56691C635F0C0015F2DB /* Assets.xcassets in Resources */,
+				547848861C7359EC009CA71A /* InfoPlist.strings in Resources */,
+				547848821C735623009CA71A /* Localizable.strings in Resources */,
 				547848701C7230DB009CA71A /* LoadingCell.xib in Resources */,
 				547848771C723386009CA71A /* SearchResultCell.xib in Resources */,
 				5478486C1C722A01009CA71A /* NothingFoundCell.xib in Resources */,
@@ -285,6 +294,23 @@
 				547848781C723386009CA71A /* Base */,
 			);
 			name = SearchResultCell.xib;
+			sourceTree = "<group>";
+		};
+		547848801C735623009CA71A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				547848811C735623009CA71A /* en */,
+				547848831C735647009CA71A /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		547848881C7359EC009CA71A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				547848871C7359EC009CA71A /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
