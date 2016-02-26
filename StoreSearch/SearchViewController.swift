@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
     //MARK: - Ivars
     let search = Search()
     var landscapeViewController: LandscapeViewController?
+    weak var splitViewDetail: DetailViewController?
   
   //MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -45,18 +46,32 @@ class SearchViewController: UIViewController {
     
     tableView.rowHeight = 80
     
-    //keyboard will be immediately visible when you start the app so the user can start typing right away
-    searchBar.becomeFirstResponder()
+    if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+        //keyboard will be immediately visible when you start the app so the user can start typing right away
+        searchBar.becomeFirstResponder()
+    }
+    
+    
+    title = NSLocalizedString("Search", comment: "Split-view master button")
   }
 
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
         
-        switch newCollection.verticalSizeClass {
-        case .Compact:
-            showLandscapeViewWithCoordinator(coordinator)
-        case .Regular, .Unspecified:
-            hideLandscapeViewWithCoordinator(coordinator)
+        let rect = UIScreen.mainScreen().bounds
+        if (rect.width == 736 && rect.height == 414) ||   // portrait
+            (rect.width == 414 && rect.height == 736) {    // landscape
+                if presentedViewController != nil {
+                    dismissViewControllerAnimated(true, completion: nil)
+                }
+        } else if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+            
+            switch newCollection.verticalSizeClass {
+            case .Compact:
+                showLandscapeViewWithCoordinator(coordinator)
+            case .Regular, .Unspecified:
+                hideLandscapeViewWithCoordinator(coordinator)
+            }
         }
     }
     
@@ -127,6 +142,7 @@ class SearchViewController: UIViewController {
         
         if case .Results(let list) = search.state {
             let detailViewController = segue.destinationViewController as! DetailViewController
+            detailViewController.isPopup = true
             
             let indexPath = sender as! NSIndexPath
             let searchResult = list[indexPath.row]
@@ -135,6 +151,15 @@ class SearchViewController: UIViewController {
       
     }
   }
+    
+    //MARK: - Private methods
+    private func hideMasterPane() {
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.splitViewController!.preferredDisplayMode = .PrimaryHidden
+            }) { _ -> Void in
+                self.splitViewController!.preferredDisplayMode = .Automatic
+        }
+    }
   
 }
 
@@ -213,8 +238,21 @@ extension SearchViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 extension SearchViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    performSegueWithIdentifier("ShowDetail", sender: indexPath)
+    searchBar.resignFirstResponder()
+    
+    if view.window!.rootViewController!.traitCollection.horizontalSizeClass == .Compact { //To distinguish iPhone and iPad
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("ShowDetail", sender: indexPath)
+    } else {
+        if case .Results(let list) = search.state {
+            if splitViewController!.displayMode != .AllVisible {
+                hideMasterPane()
+            }
+            
+            splitViewDetail?.searchResult = list[indexPath.row]
+        }
+    }
+    
   }
   
   func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {

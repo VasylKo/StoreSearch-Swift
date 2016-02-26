@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class DetailViewController: UIViewController {
 
@@ -25,7 +26,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceButton: UIButton!
 
     //MARK: - Ivars
-    var searchResult: SearchResult!
+    var searchResult: SearchResult! {
+        didSet {
+            if isViewLoaded() {
+                updateUI()
+            }
+        }
+    }
 
     lazy var currencyFormatter:NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -36,28 +43,41 @@ class DetailViewController: UIViewController {
   
     var downloadTask: NSURLSessionDownloadTask?
     var dismissAnimationStyle = AnimationStyle.Fade
+    
+    var isPopup = false
   
   //MARK: - View life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    if let displayName = NSBundle.mainBundle().localizedInfoDictionary?["CFBundleDisplayName"] as? String {
+        title = displayName
+    }
+
     view.backgroundColor = UIColor.clearColor()
     view.tintColor = UIColor.appBluishGreenTinColor()
     
     popupView.layer.cornerRadius = 10
     
-    //Add Gesture recognizer
-    let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("close:"))
-    gestureRecognizer.cancelsTouchesInView = false
-    gestureRecognizer.delegate = self
-    view.addGestureRecognizer(gestureRecognizer)
+    if isPopup {
+        //Add Gesture recognizer
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("close:"))
+        gestureRecognizer.cancelsTouchesInView = false
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        
+        let downSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("close:"))
+        downSwipeGestureRecognizer.direction = .Down
+        view.addGestureRecognizer(downSwipeGestureRecognizer)
+        
+        let upSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("close:"))
+        upSwipeGestureRecognizer.direction = .Up
+        view.addGestureRecognizer(upSwipeGestureRecognizer)
+    } else {
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+        popupView.hidden = true
+    }
     
-    let downSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("close:"))
-    downSwipeGestureRecognizer.direction = .Down
-    view.addGestureRecognizer(downSwipeGestureRecognizer)
-    
-    let upSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("close:"))
-    upSwipeGestureRecognizer.direction = .Up
-    view.addGestureRecognizer(upSwipeGestureRecognizer)
     
     
     if searchResult != nil {
@@ -115,8 +135,17 @@ class DetailViewController: UIViewController {
     if let url = NSURL(string: searchResult.artworkURL100) {
       downloadTask = artworkImageView.loadImageWithURL(url)
     }
+    
+    popupView.hidden = false
   }
   
+    //MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowMenu" {
+            let controller = segue.destinationViewController as! MenuViewController
+            controller.delegate = self
+        }
+    }
 }
 
 //MARK: - UIViewControllerTransitioningDelegate
@@ -145,5 +174,30 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return (touch.view === self.view)
+    }
+}
+
+extension DetailViewController: MenuViewControllerDelegate {
+    func menuViewControllerSendSupportEmail(controller: MenuViewController) {
+    
+        if MFMailComposeViewController.canSendMail() {
+            //dissmis view controller
+            dismissViewControllerAnimated(true) { () -> Void in
+                let controller = MFMailComposeViewController()
+                controller.setSubject(NSLocalizedString("Support Request", comment: "Email subject"))
+                controller.setToRecipients(["clic@ukr.net"])
+                controller.mailComposeDelegate = self
+                controller.modalPresentationStyle = .FormSheet
+                self.presentViewController(controller, animated: true, completion: nil)
+                
+            }
+        }
+        
+    }
+}
+
+extension DetailViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

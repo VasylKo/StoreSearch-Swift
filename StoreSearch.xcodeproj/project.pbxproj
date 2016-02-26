@@ -28,6 +28,7 @@
 		547848771C723386009CA71A /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547848791C723386009CA71A /* SearchResultCell.xib */; };
 		547848821C735623009CA71A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547848801C735623009CA71A /* Localizable.strings */; };
 		547848861C7359EC009CA71A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 547848881C7359EC009CA71A /* InfoPlist.strings */; };
+		548C8E961C809047003ABAD4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C8E951C809047003ABAD4 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		540C2FD31C6E315700980071 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		540C2FD51C6E32F400980071 /* LandscapeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		5422F0B11C6CDA3A0087B99A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		547000781C8081CB001F9D37 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		547848681C6E3A28009CA71A /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
 		5478486A1C71E700009CA71A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		5478486D1C722A01009CA71A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NothingFoundCell.xib; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		547848811C735623009CA71A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		547848831C735647009CA71A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		547848871C7359EC009CA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		548C8E951C809047003ABAD4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 				5174B05D1C69191C00CC67BA /* DetailViewController.swift */,
 				540C2FD51C6E32F400980071 /* LandscapeViewController.swift */,
 				5478486A1C71E700009CA71A /* Search.swift */,
+				548C8E951C809047003ABAD4 /* MenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -242,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512C56641C635F0C0015F2DB /* SearchViewController.swift in Sources */,
+				548C8E961C809047003ABAD4 /* MenuViewController.swift in Sources */,
 				51532AE11C63AA9B00F5450D /* SearchResult.swift in Sources */,
 				5174B05C1C68F06400CC67BA /* UIImageView+DownloadImage.swift in Sources */,
 				5174B0611C691AB900CC67BA /* DimmingPresentationController.swift in Sources */,
@@ -309,6 +314,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				547848871C7359EC009CA71A /* Base */,
+				547000781C8081CB001F9D37 /* uk */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkotsiuba.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -422,6 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkotsiuba.StoreSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
