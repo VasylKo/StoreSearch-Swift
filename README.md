@@ -1,5 +1,6 @@
 # StoreSearch-Swift (4/4)
-This app is made by me as a fourth part of Ray Wenderlich book – “The iOS Apprentice Fourth Edition (Beginning iOS Development with Swift 2) Tutorial 4: StoreSearch”.
+This app is made by me as a fourth part of Ray Wenderlich book – “The iOS Apprentice Fourth Edition (Beginning iOS Development with Swift 2) Tutorial 4: StoreSearch”.  
+Part of my [Swift learning progress.](https://github.com/VasylKo/Swift-learning-progress) 
 
 __Tools used:__ xCode 7.2 and swift 2.1.
 
